@@ -4,6 +4,7 @@ header .nav-wrapper {
   width: 100%;
   z-index: 2;
   position: fixed;
+  border-bottom: 1px solid var(--card-border, #2a2a2a);
 }
 
 header nav {
@@ -143,6 +144,11 @@ header .nav-brand {
   font-size: var(--heading-font-size-s);
   font-weight: 700;
   line-height: 1;
+  color: var(--white, #fff);
+}
+
+header .nav-brand a:any-link {
+  color: var(--accent-color, #3ee8b5);
 }
 
 header nav .nav-brand img {
@@ -273,9 +279,17 @@ header nav .nav-tools {
 header nav .nav-tools .button {
   margin: 0;
   border: none;
-  padding: 0.5em;
-  background: none;
-  line-height: 0;
+  padding: 0.5em 1.2em;
+  background-color: var(--accent-color, #3ee8b5);
+  color: var(--background-color, #0a0a0a);
+  line-height: 1.25;
+  border-radius: 2.4em;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+header nav .nav-tools .button:hover {
+  background-color: var(--accent-hover, #2cc99a);
 }
 
 /* breadcrumbs */
