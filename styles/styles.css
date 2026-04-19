@@ -13,7 +13,7 @@
 :root {
   /* TrueGloss brand colors */
   --background-color: #0a0a0a;
-  --light-color: #141414;
+  --light-color: #111;
   --dark-color: #1a1a1a;
   --text-color: #e8e8e8;
   --text-muted: #9ca3af;
@@ -21,7 +21,7 @@
   --link-hover-color: #2cc99a;
   --accent-color: #3ee8b5;
   --accent-hover: #2cc99a;
-  --card-bg: #1a1a1a;
+  --card-bg: #141414;
   --card-border: #2a2a2a;
   --white: #ffffff;
   --highlight-bg: #0d1f18;
@@ -64,13 +64,11 @@
 
 @media (width >= 900px) {
   :root {
-    /* body sizes */
     --body-font-size-m: 18px;
     --body-font-size-s: 16px;
     --body-font-size-xs: 14px;
 
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
+    --heading-font-size-xxl: 48px;
     --heading-font-size-xl: 36px;
     --heading-font-size-l: 28px;
     --heading-font-size-m: 22px;
@@ -128,7 +126,8 @@ h6 {
   color: var(--white);
 }
 
-/* Accent color on headings - second word or em/strong */
+/* Accent color on headings via em */
+h1 em,
 h2 em,
 h2 strong {
   color: var(--accent-color);
@@ -198,7 +197,7 @@ button {
   margin: 12px 0;
   border: 2px solid transparent;
   border-radius: 2.4em;
-  padding: 0.5em 1.2em;
+  padding: 0.5em 1.5em;
   font-family: var(--body-font-family);
   font-style: normal;
   font-weight: 500;
@@ -230,7 +229,7 @@ button:disabled:hover {
 
 a.button.secondary,
 button.secondary {
-  background-color: unset;
+  background-color: transparent;
   border: 2px solid var(--card-border);
   color: var(--white);
 }
@@ -239,7 +238,7 @@ a.button.secondary:hover,
 button.secondary:hover {
   border-color: var(--accent-color);
   color: var(--accent-color);
-  background-color: unset;
+  background-color: transparent;
 }
 
 main img {
@@ -295,20 +294,26 @@ main .section.highlight {
   text-align: center;
 }
 
-main .section.dark {
-  background-color: var(--dark-color);
-  margin: 0;
-  padding: 60px 0;
-}
-
-/* centered section text */
 main .section.highlight h2,
 main .section.highlight p {
   text-align: center;
 }
 
-main .section.highlight h2 {
-  color: var(--white);
+main .section.dark {
+  background-color: var(--dark-color);
+  margin: 0;
+  padding: 40px 0;
+  text-align: center;
+}
+
+/* centered section variant */
+main .section.center {
+  text-align: center;
+}
+
+main .section.center h2,
+main .section.center p {
+  text-align: center;
 }
 
 /* price styling */
@@ -327,7 +332,7 @@ li {
   margin-bottom: 0.4em;
 }
 
-/* blockquote styling for testimonials */
+/* blockquote styling */
 blockquote {
   border-left: 3px solid var(--accent-color);
   padding-left: 1em;
