@@ -5,11 +5,12 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
   grid-gap: 24px;
+  justify-content: center;
 }
 
 .cards > ul > li {
   border: 1px solid var(--card-border, #2a2a2a);
-  background-color: var(--card-bg, #1a1a1a);
+  background-color: var(--card-bg, #141414);
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.2s, border-color 0.2s;
@@ -22,6 +23,7 @@
 
 .cards .cards-card-body {
   margin: 16px;
+  text-align: center;
 }
 
 .cards .cards-card-body h3,
@@ -43,4 +45,12 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: 0;
+}
+
+/* centered cards wrapper */
+.section.center .cards-wrapper,
+.section.light .cards-wrapper,
+.section.highlight .cards-wrapper {
+  display: flex;
+  justify-content: center;
 }
