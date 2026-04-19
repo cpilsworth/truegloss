@@ -9,25 +9,34 @@
   min-height: 400px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero > div {
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--white);
-  text-shadow: 0 2px 20px rgb(0 0 0 / 60%);
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 2px 30px rgb(0 0 0 / 80%);
+  margin-bottom: 0.4em;
 }
 
 .hero p {
-  color: var(--white);
-  opacity: 0.9;
-  text-shadow: 0 1px 10px rgb(0 0 0 / 40%);
-  max-width: 600px;
+  color: #fff;
+  text-shadow: 0 1px 15px rgb(0 0 0 / 60%);
+}
+
+.hero .button-container {
+  display: inline-block;
+  margin: 0 6px;
 }
 
 .hero a.button {
-  margin-right: 12px;
+  margin: 8px 6px;
 }
 
 .hero picture {
@@ -42,7 +51,12 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgb(0 0 0 / 70%) 0%, rgb(0 0 0 / 30%) 100%);
+  background: linear-gradient(
+    180deg,
+    rgb(0 0 0 / 50%) 0%,
+    rgb(0 0 0 / 40%) 50%,
+    rgb(0 0 0 / 60%) 100%
+  );
 }
 
 .hero img {
@@ -53,7 +67,7 @@
 
 @media (width >= 900px) {
   .hero {
-    padding: 100px 32px;
-    min-height: 500px;
+    padding: 120px 32px;
+    min-height: 520px;
   }
 }
