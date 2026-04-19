@@ -5,6 +5,7 @@
 
 .columns img {
   width: 100%;
+  border-radius: 12px;
 }
 
 .columns > div > div {
@@ -19,11 +20,20 @@
   display: block;
 }
 
+.columns h2,
+.columns h3 {
+  color: var(--white, #fff);
+}
+
+.columns p {
+  color: var(--text-muted, #9ca3af);
+}
+
 @media (width >= 900px) {
   .columns > div {
     align-items: center;
     flex-direction: unset;
-    gap: 24px;
+    gap: 48px;
   }
 
   .columns > div > div {
