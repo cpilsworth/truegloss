@@ -11,13 +11,20 @@
  */
 
 :root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  /* TrueGloss brand colors */
+  --background-color: #0a0a0a;
+  --light-color: #141414;
+  --dark-color: #1a1a1a;
+  --text-color: #e8e8e8;
+  --text-muted: #9ca3af;
+  --link-color: #3ee8b5;
+  --link-hover-color: #2cc99a;
+  --accent-color: #3ee8b5;
+  --accent-hover: #2cc99a;
+  --card-bg: #1a1a1a;
+  --card-border: #2a2a2a;
+  --white: #ffffff;
+  --highlight-bg: #0d1f18;
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
@@ -118,6 +125,14 @@ h6 {
   font-weight: 600;
   line-height: 1.25;
   scroll-margin: 40px;
+  color: var(--white);
+}
+
+/* Accent color on headings - second word or em/strong */
+h2 em,
+h2 strong {
+  color: var(--accent-color);
+  font-style: normal;
 }
 
 h1 { font-size: var(--heading-font-size-xxl); }
@@ -135,6 +150,7 @@ pre,
 blockquote {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
+  color: var(--text-muted);
 }
 
 code,
@@ -189,38 +205,48 @@ button {
   line-height: 1.25;
   text-align: center;
   text-decoration: none;
-  background-color: var(--link-color);
+  background-color: var(--accent-color);
   color: var(--background-color);
   cursor: pointer;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: background-color 0.2s, transform 0.2s;
 }
 
 a.button:hover,
 a.button:focus,
 button:hover,
 button:focus {
-  background-color: var(--link-hover-color);
+  background-color: var(--accent-hover);
   cursor: pointer;
+  transform: translateY(-1px);
 }
 
 button:disabled,
 button:disabled:hover {
-  background-color: var(--light-color);
+  background-color: var(--dark-color);
   cursor: unset;
 }
 
 a.button.secondary,
 button.secondary {
   background-color: unset;
-  border: 2px solid currentcolor;
-  color: var(--text-color);
+  border: 2px solid var(--card-border);
+  color: var(--white);
+}
+
+a.button.secondary:hover,
+button.secondary:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  background-color: unset;
 }
 
 main img {
   max-width: 100%;
   width: auto;
   height: auto;
+  border-radius: 12px;
 }
 
 .icon {
@@ -255,10 +281,57 @@ main > .section:first-of-type {
   }
 }
 
-/* section metadata */
-main .section.light,
-main .section.highlight {
+/* section metadata styles */
+main .section.light {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+main .section.highlight {
+  background-color: var(--highlight-bg);
+  margin: 0;
+  padding: 60px 0;
+  text-align: center;
+}
+
+main .section.dark {
+  background-color: var(--dark-color);
+  margin: 0;
+  padding: 60px 0;
+}
+
+/* centered section text */
+main .section.highlight h2,
+main .section.highlight p {
+  text-align: center;
+}
+
+main .section.highlight h2 {
+  color: var(--white);
+}
+
+/* price styling */
+strong {
+  color: var(--accent-color);
+  font-weight: 700;
+}
+
+/* lists in dark theme */
+ul, ol {
+  padding-left: 1.5em;
+}
+
+li {
+  color: var(--text-muted);
+  margin-bottom: 0.4em;
+}
+
+/* blockquote styling for testimonials */
+blockquote {
+  border-left: 3px solid var(--accent-color);
+  padding-left: 1em;
+  margin-left: 0;
+  font-style: italic;
+  color: var(--text-muted);
 }
