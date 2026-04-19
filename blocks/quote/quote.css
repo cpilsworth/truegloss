@@ -12,6 +12,7 @@
 
 .quote blockquote .quote-quotation {
   font-size: 120%;
+  color: var(--text-muted, #9ca3af);
 }
 
 .quote blockquote .quote-quotation > :first-child {
@@ -21,21 +22,23 @@
 .quote blockquote .quote-quotation > :first-child::before,
 .quote blockquote .quote-quotation > :last-child::after {
   line-height: 0;
+  color: var(--accent-color, #3ee8b5);
 }
 
 .quote blockquote .quote-quotation > :first-child::before {
-  content: "“";
+  content: "\201C";
 }
 
 .quote blockquote .quote-quotation > :last-child::after {
-  content: "”";
+  content: "\201D";
 }
 
 .quote blockquote .quote-attribution {
   text-align: right;
+  color: var(--white, #fff);
 }
 
 .quote blockquote .quote-attribution > :first-child::before {
-  content: "—";
+  content: "\2014";
   padding-right: 0.5ch;
 }
