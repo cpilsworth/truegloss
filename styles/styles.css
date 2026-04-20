@@ -312,8 +312,9 @@ main .section.dark {
   text-align: center;
 }
 
-/* Trust badges — pill-shaped badges arranged horizontally */
-main .section.dark p {
+/* Trust badges — pill-shaped badges arranged horizontally.
+   Only targets dark sections that are NOT also .center (avoids the testimonials section) */
+main .section.dark:not(.center) .default-content-wrapper > p:has(strong) {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -323,7 +324,7 @@ main .section.dark p {
   font-size: 0; /* hide middot separators between strong tags */
 }
 
-main .section.dark p strong {
+main .section.dark:not(.center) .default-content-wrapper > p:has(strong) strong {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -337,7 +338,7 @@ main .section.dark p strong {
 }
 
 /* Add a checkmark circle before each badge */
-main .section.dark p strong::before {
+main .section.dark:not(.center) .default-content-wrapper > p:has(strong) strong::before {
   content: '✓';
   display: inline-flex;
   align-items: center;
