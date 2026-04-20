@@ -31,7 +31,7 @@
 
 @media (width >= 900px) {
   .columns > div {
-    align-items: center;
+    align-items: flex-start;
     flex-direction: unset;
     gap: 48px;
   }
@@ -40,4 +40,32 @@
     flex: 1;
     order: unset;
   }
+}
+
+/* Footer columns - tighter gap, top-aligned */
+footer .columns > div {
+  gap: 24px;
+}
+
+footer .columns > div > div {
+  order: unset;
+}
+
+footer .columns h2 {
+  font-size: var(--heading-font-size-xs);
+  margin-top: 0;
+}
+
+footer .columns ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer .columns li {
+  margin-bottom: 8px;
+}
+
+footer .columns a:any-link {
+  color: var(--accent-color, #3ee8b5);
 }
