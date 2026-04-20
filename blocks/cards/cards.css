@@ -8,6 +8,13 @@
   justify-content: center;
 }
 
+/* Force 3 columns on desktop for service cards */
+@media (width >= 900px) {
+  .cards > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .cards > ul > li {
   border: 1px solid var(--card-border, #2a2a2a);
   background-color: var(--card-bg, #141414);
@@ -23,7 +30,7 @@
 
 .cards .cards-card-body {
   margin: 16px;
-  text-align: center;
+  text-align: left;
 }
 
 .cards .cards-card-body h3,
@@ -34,6 +41,22 @@
 
 .cards .cards-card-body p {
   color: var(--text-muted, #9ca3af);
+}
+
+/* Price styling — prominent green */
+.cards .cards-card-body strong {
+  color: var(--accent-color);
+  font-size: var(--heading-font-size-m);
+  display: block;
+  margin-top: auto;
+}
+
+/* Cards without images get more padding and flex column layout */
+.cards > ul > li:not(:has(.cards-card-image)) .cards-card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  min-height: 180px;
 }
 
 .cards .cards-card-image {
