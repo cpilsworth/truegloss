@@ -1,44 +1,72 @@
-.quote blockquote {
-  margin: 0 auto;
-  padding: 0 24px;
-  max-width: 900px;
+/* Grid layout for multiple quotes in a section */
+.section > div:has(.quote-wrapper + .quote-wrapper) {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
 }
 
 @media (width >= 900px) {
-  .quote blockquote {
-    padding: 0 32px;
+  .section > div:has(.quote-wrapper + .quote-wrapper) {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
+/* Make heading/description span full width in quote grid */
+.section > div:has(.quote-wrapper + .quote-wrapper) > .default-content-wrapper {
+  grid-column: 1 / -1;
+}
+
+.quote {
+  margin-bottom: 0;
+}
+
+.quote blockquote {
+  margin: 0;
+  padding: 24px;
+  background-color: var(--card-bg, #141414);
+  border: 1px solid var(--card-border, #2a2a2a);
+  border-radius: 12px;
+  max-width: unset;
+}
+
 .quote blockquote .quote-quotation {
-  font-size: 120%;
+  font-size: 100%;
   color: var(--text-muted, #9ca3af);
+  font-style: normal;
 }
 
 .quote blockquote .quote-quotation > :first-child {
-  text-indent: -0.5ch;
-}
-
-.quote blockquote .quote-quotation > :first-child::before,
-.quote blockquote .quote-quotation > :last-child::after {
-  line-height: 0;
-  color: var(--accent-color, #3ee8b5);
+  text-indent: 0;
 }
 
 .quote blockquote .quote-quotation > :first-child::before {
   content: "\201C";
+  color: var(--accent-color, #3ee8b5);
 }
 
 .quote blockquote .quote-quotation > :last-child::after {
   content: "\201D";
+  color: var(--accent-color, #3ee8b5);
 }
 
 .quote blockquote .quote-attribution {
-  text-align: right;
+  text-align: left;
   color: var(--white, #fff);
+  font-weight: 700;
+  margin-top: 16px;
 }
 
 .quote blockquote .quote-attribution > :first-child::before {
-  content: "\2014";
-  padding-right: 0.5ch;
+  content: "";
+  padding-right: 0;
+}
+
+/* Star ratings via CSS */
+.quote blockquote .quote-quotation::before {
+  content: '★★★★★';
+  display: block;
+  color: var(--accent-color, #3ee8b5);
+  font-size: 16px;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
 }
