@@ -37,10 +37,12 @@
 .cards .cards-card-body h2 {
   color: var(--white, #fff);
   margin-top: 0;
+  text-align: left;
 }
 
 .cards .cards-card-body p {
   color: var(--text-muted, #9ca3af);
+  text-align: left;
 }
 
 /* Price styling — prominent green */
