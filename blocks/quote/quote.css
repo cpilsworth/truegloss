@@ -1,18 +1,19 @@
-/* Grid layout for multiple quotes in a section */
-.section > div:has(.quote-wrapper + .quote-wrapper) {
+/* Grid layout for multiple quotes in a section.
+   Quote-wrappers are direct children of .section (not inside an intermediate div) */
+.section:has(.quote-wrapper + .quote-wrapper) {
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
 }
 
 @media (width >= 900px) {
-  .section > div:has(.quote-wrapper + .quote-wrapper) {
+  .section:has(.quote-wrapper + .quote-wrapper) {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* Make heading/description span full width in quote grid */
-.section > div:has(.quote-wrapper + .quote-wrapper) > .default-content-wrapper {
+.section:has(.quote-wrapper + .quote-wrapper) > .default-content-wrapper {
   grid-column: 1 / -1;
 }
 
