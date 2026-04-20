@@ -58,6 +58,6 @@ footer .footer > div:last-child {
   }
 
   footer .footer > div:first-child {
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
