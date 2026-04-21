@@ -15,7 +15,7 @@ BOOKING_SENDER_DOMAIN = "truegloss.uk"
 
 [[send_email]]
 name = "BOOKING_EMAIL"
-destination_address = "cpilsworth+truegloss@gmail.com"
+destination_address = "truegloss.autos@gmail.com"
 
 # Optional: disable push invalidation (not recommended for production)
 # PUSH_INVALIDATION = "disabled"

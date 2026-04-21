@@ -68,7 +68,7 @@ test('sends email on valid submission', async () => {
   const json = await res.json();
   assert.equal(json.ok, true);
   assert.equal(sent.length, 1);
-  assert.equal(sent[0].to, 'cpilsworth+truegloss@gmail.com');
+  assert.equal(sent[0].to, 'truegloss.autos@gmail.com');
   assert.match(sent[0].from, /bookings@truegloss\.uk/);
   const raw = sent[0].raw;
   assert.match(raw, /Jane Doe/);
