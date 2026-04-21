@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "truegloss-cloudflare",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker for www.truegloss.uk — AEM Edge Delivery Services BYOC CDN",
+  "module": "./src/index.mjs",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "log": "wrangler tail -f pretty"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}

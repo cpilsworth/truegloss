@@ -1,0 +1,20 @@
+name = "truegloss"
+main = "src/index.mjs"
+workers_dev = true
+route = "www.truegloss.uk/*"
+account_id = "82bcae6122a63577b54d612ecf76b988"
+
+compatibility_date = "2025-03-17"
+
+[build]
+command = "npm install"
+
+[vars]
+ORIGIN_HOSTNAME = "main--truegloss--cpilsworth.aem.live"
+
+# Optional: disable push invalidation (not recommended for production)
+# PUSH_INVALIDATION = "disabled"
+
+# Optional: enable origin authentication
+# see https://www.aem.live/docs/authentication-setup-site
+# ORIGIN_AUTHENTICATION = "hlx_YOUR_TOKEN_HERE"
