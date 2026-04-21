@@ -1,5 +1,6 @@
 {
-  "project": "DA Block Collection",
+  "project": "TrueGloss",
+  "host": "www.truegloss.uk",
   "editUrlLabel": "Document Authoring",
   "editUrlPattern": "https://da.live/edit#/{{org}}/{{site}}{{pathname}}"
 }
