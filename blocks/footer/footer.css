@@ -1,40 +1,80 @@
+/* Footer — matches original site design */
 footer {
-  background-color: var(--dark-color, #1a1a1a);
+  background-color: var(--background-color, #0a0a0a);
   font-size: var(--body-font-size-xs);
-  border-top: 1px solid var(--card-border, #2a2a2a);
+  border-top: 1px solid rgb(255 255 255 / 25%);
 }
 
+/* Main content wrapper (the div created by footer.js) */
 footer .footer > div {
   margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+  max-width: 1400px;
+  padding: 64px 7.7% 0;
 }
 
-footer .footer > div:first-child {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
-}
-
+/* Section headings */
 footer .footer h2 {
   font-size: var(--heading-font-size-xs);
   color: var(--white, #fff);
   margin-top: 0;
+  margin-bottom: 16px;
+  font-weight: 700;
 }
 
-footer .footer p {
-  margin: 0;
-  color: var(--text-muted, #9ca3af);
-}
-
-footer .footer a:any-link {
+/* Brand accent — "Autos" in teal */
+footer .footer .footer-brand-accent {
   color: var(--accent-color, #3ee8b5);
 }
 
-footer .footer a:hover {
-  color: var(--accent-hover, #2cc99a);
+/* Paragraphs */
+footer .footer p {
+  margin: 0;
+  color: rgb(255 255 255 / 85%);
+  line-height: 1.6;
 }
 
+/* Default link style — plain white text, not accent */
+footer .footer a:any-link {
+  color: rgb(255 255 255 / 85%);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+footer .footer a:hover {
+  color: var(--accent-color, #3ee8b5);
+}
+
+/* Override EDS button-container / button styles in footer */
+footer .footer .button-container {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+footer .footer a.button:any-link {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  color: rgb(255 255 255 / 85%);
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-decoration: none;
+  white-space: normal;
+  cursor: pointer;
+  transform: none;
+}
+
+footer .footer a.button:hover {
+  background: none;
+  color: var(--accent-color, #3ee8b5);
+  transform: none;
+}
+
+/* Lists */
 footer .footer ul {
   list-style: none;
   padding: 0;
@@ -42,22 +82,82 @@ footer .footer ul {
 }
 
 footer .footer li {
-  margin-bottom: 8px;
-  color: var(--text-muted, #9ca3af);
+  margin-bottom: 12px;
 }
 
-footer .footer > div:last-child {
-  border-top: 1px solid var(--card-border, #2a2a2a);
-  padding-top: 16px;
+footer .footer li a:any-link {
+  color: rgb(255 255 255 / 85%);
+}
+
+footer .footer li a:hover {
+  color: var(--accent-color, #3ee8b5);
+}
+
+/* Columns layout inside footer — override the columns block gap */
+footer .columns > div {
+  gap: 48px;
+}
+
+/* Contact items — icon + text flex row */
+footer .footer .footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: rgb(255 255 255 / 85%);
+}
+
+footer .footer .footer-contact-item svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: rgb(255 255 255 / 85%);
+}
+
+footer .footer .footer-contact-item:hover svg {
+  color: var(--accent-color, #3ee8b5);
+}
+
+/* Social icons */
+footer .footer .footer-social {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+}
+
+footer .footer .footer-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  background: rgb(255 255 255 / 10%);
+  color: rgb(255 255 255 / 85%);
+  transition: background 0.3s, color 0.3s;
+}
+
+footer .footer .footer-social-icon:hover {
+  background: var(--accent-color, #3ee8b5);
+  color: #000;
+}
+
+/* Copyright bar — targets the last section inside the wrapper */
+footer .footer .section:last-child {
+  border-top: 1px solid rgb(255 255 255 / 25%);
+  margin-top: 48px;
+  padding-top: 32px;
+  padding-bottom: 32px;
   text-align: center;
 }
 
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
-  }
+footer .footer .section:last-child p {
+  font-size: var(--body-font-size-xs);
+  color: rgb(255 255 255 / 85%);
+}
 
-  footer .footer > div:first-child {
-    grid-template-columns: repeat(3, 1fr);
+/* Desktop layout */
+@media (width >= 900px) {
+  footer .columns > div {
+    gap: 48px;
   }
 }
