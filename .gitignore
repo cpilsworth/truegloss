@@ -10,4 +10,4 @@ helix-importer-ui
 
 content/
 
-cloudflare/.node_modules
+cloudflare/node_modules
