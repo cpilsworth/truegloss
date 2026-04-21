@@ -16,7 +16,7 @@ import { EmailMessage } from 'cloudflare:email';
 import { createMimeMessage, Mailbox } from 'mimetext/browser';
 
 const BOOKING_FIELDS = ['name', 'phone', 'email', 'preferredDate', 'note'];
-const BOOKING_RECIPIENT = 'cpilsworth@gmail.com';
+const BOOKING_RECIPIENT = 'cpilsworth+truegloss@gmail.com';
 
 const escapeHtml = (s = '') => String(s)
   .replace(/&/g, '&amp;')
