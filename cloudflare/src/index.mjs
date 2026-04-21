@@ -12,6 +12,88 @@
 
 'use strict';
 
+import { EmailMessage } from 'cloudflare:email';
+import { createMimeMessage, Mailbox } from 'mimetext/browser';
+
+const BOOKING_FIELDS = ['name', 'phone', 'email', 'preferredDate', 'note'];
+const BOOKING_RECIPIENT = 'cpilsworth@gmail.com';
+
+const escapeHtml = (s = '') => String(s)
+  .replace(/&/g, '&amp;')
+  .replace(/</g, '&lt;')
+  .replace(/>/g, '&gt;')
+  .replace(/"/g, '&quot;')
+  .replace(/'/g, '&#39;');
+
+const jsonResponse = (body, status = 200) => new Response(JSON.stringify(body), {
+  status,
+  headers: { 'content-type': 'application/json' },
+});
+
+export const handleBooking = async (request, env) => {
+  if (request.method !== 'POST') {
+    return jsonResponse({ error: 'Method Not Allowed' }, 405);
+  }
+  let data;
+  try {
+    data = await request.json();
+  } catch {
+    return jsonResponse({ error: 'Invalid JSON' }, 400);
+  }
+  const missing = ['name', 'phone', 'email', 'preferredDate'].filter((k) => !data || !String(data[k] || '').trim());
+  if (missing.length) {
+    return jsonResponse({ error: `Missing fields: ${missing.join(', ')}` }, 400);
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(data.email))) {
+    return jsonResponse({ error: 'Invalid email' }, 400);
+  }
+
+  const fields = {};
+  BOOKING_FIELDS.forEach((k) => { fields[k] = String(data[k] || '').trim(); });
+
+  const textLines = [
+    'New booking request from TrueGloss website',
+    '',
+    `Name:           ${fields.name}`,
+    `Phone:          ${fields.phone}`,
+    `Email:          ${fields.email}`,
+    `Preferred date: ${fields.preferredDate}`,
+    '',
+    'Note:',
+    fields.note || '(none)',
+  ];
+  const htmlRows = BOOKING_FIELDS
+    .map((k) => `<tr><th align="left">${k}</th><td>${escapeHtml(fields[k] || '')}</td></tr>`)
+    .join('');
+
+  const msg = createMimeMessage();
+  msg.setSender({ name: 'TrueGloss Bookings', addr: `bookings@${env.BOOKING_SENDER_DOMAIN || 'truegloss.uk'}` });
+  msg.setRecipient(BOOKING_RECIPIENT);
+  msg.setSubject(`New booking request — ${fields.name}`);
+  msg.setHeader('Reply-To', new Mailbox({ addr: fields.email, name: fields.name }));
+  msg.addMessage({ contentType: 'text/plain', data: textLines.join('\n') });
+  msg.addMessage({
+    contentType: 'text/html',
+    data: `<h2>New booking request</h2><table>${htmlRows}</table>`,
+  });
+
+  if (!env.BOOKING_EMAIL || typeof env.BOOKING_EMAIL.send !== 'function') {
+    return jsonResponse({ error: 'Email binding unavailable' }, 500);
+  }
+
+  try {
+    const message = new EmailMessage(
+      `bookings@${env.BOOKING_SENDER_DOMAIN || 'truegloss.uk'}`,
+      BOOKING_RECIPIENT,
+      msg.asRaw(),
+    );
+    await env.BOOKING_EMAIL.send(message);
+  } catch (err) {
+    return jsonResponse({ error: `Email send failed: ${err.message}` }, 502);
+  }
+  return jsonResponse({ ok: true });
+};
+
 const getExtension = (path) => {
   const basename = path.split('/').pop();
   const pos = basename.lastIndexOf('.');
@@ -24,6 +106,11 @@ const isRUMRequest = (url) => /\/\.(rum|optel)\/.*/.test(url.pathname);
 
 const handleRequest = async (request, env, ctx) => {
   const url = new URL(request.url);
+
+  if (url.pathname === '/api/booking') {
+    return handleBooking(request, env);
+  }
+
   if (url.port) {
     // Cloudflare opens a couple more ports than 443, so we redirect visitors
     // to the default port to avoid confusion.

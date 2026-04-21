@@ -6,10 +6,14 @@
   "module": "./src/index.mjs",
   "scripts": {
     "deploy": "wrangler deploy",
-    "log": "wrangler tail -f pretty"
+    "log": "wrangler tail -f pretty",
+    "test": "node --import ./test/register.mjs --test 'test/*.test.mjs'"
   },
   "license": "Apache-2.0",
   "devDependencies": {
     "wrangler": "^3.0.0"
+  },
+  "dependencies": {
+    "mimetext": "^3.0.28"
   }
 }

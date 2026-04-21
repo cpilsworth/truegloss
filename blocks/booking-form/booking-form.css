@@ -1,0 +1,8 @@
+.booking-form {
+  padding: 24px 0;
+}
+
+.booking-form-container .booking-form-wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+}
